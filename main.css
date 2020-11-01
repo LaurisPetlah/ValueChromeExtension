@@ -1,0 +1,223 @@
+* {
+    box-sizing: border-box;
+    touch-action: none;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    z-index: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    overflow: hidden;
+    /* display: grid; */
+    /* height: 100vh; */
+    /* grid-template-columns: 100vw;
+    grid-template-rows: 70vh 30vh; */
+    /* gap: 0.75em; */
+    /* justify-content: center; */
+}
+
+.splashScreen,
+.splashScreenSmall {
+    position: absolute;
+    display: inline-block;
+    text-align: left;
+    left: 16px;
+    top: 32px;
+    font-size: 72px;
+    line-height: 58px;
+    letter-spacing: -0.1em;
+    opacity: 1;
+    color: white;
+    mix-blend-mode: difference;
+    /* filter: invert(); */
+}
+
+.splashScreenSmall {
+    left: 32px;
+    top: 72px;
+    font-size: 8px;
+}
+
+.select-menu {
+    position: absolute;
+    bottom: 48px;
+    right: 32px;
+    width: 128px;
+    height: 32px;
+    mix-blend-mode: difference;
+    transition: all ease-in-out 200ms;
+    z-index: 1;
+    /* background: none; */
+}
+
+.select-menu:hover {
+    mix-blend-mode: normal;
+    cursor: pointer;
+    /* transform: translateY(-100%); */
+}
+
+.items {
+    /* background: none; */
+    /* height: 0; */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: grid;
+    justify-content: right;
+    align-items: center;
+    justify-items: center;
+
+    list-style-type: none;
+    /* background: none; */
+    background-blend-mode: difference;
+    /* min-height: 32px; */
+    /* background-color: red; */
+}
+
+.option {
+    margin: 0;
+    height: 0px;
+    width: 240px;
+    position: relative;
+    transition: all ease-in-out 200ms;
+    display: grid;
+    justify-content: right;
+    align-items: center;
+    justify-items: right;
+    grid-template-columns: auto 32px;
+    color: white;
+    font-size: 16px;
+    text-align: right;
+    gap: 8px;
+    /* mix-blend-mode: normal; */
+    /* background-blend-mode: difference; */
+    /* background-color: #ffffff; */
+    /* background-blend-mode: exclusion; */
+    /* background-color: red; */
+    /* background-color: red; */
+}
+
+.option * {
+    visibility: hidden;
+    isolation: isolate;
+    opacity: 0;
+    transition: all ease-in-out 300ms;
+    transform: scale(0);
+    /* transform-origin: top; */
+    clip-path: circle(0%);
+}
+
+.select-menu:hover .option * {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    clip-path: circle(100%);
+}
+
+.option .style-img {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    border-radius: 50%;
+    right: 0;
+    top: 0;
+}
+
+.option p {
+    transform: scale(0);
+    transform-origin: right;
+    transition: all ease-in-out 200ms;
+    font-size: 16px;
+    letter-spacing: -0.05rem;
+}
+
+.select-menu:hover .option p {
+    transform: scale(1);
+}
+
+.select-menu .option::after {
+    content: '';
+    display: block;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* background-color: rgba(255,255,255,1); */
+    width: 32px;
+    height: 32px;
+    /* margin-bottom: 16px; */
+    border-radius: 50%;
+    transition: all ease-in-out 200ms;
+    border: solid rgb(255, 255, 255) 4px;
+    list-style-type: none;
+    box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.3);
+    /* mix-blend-mode: difference; */
+    /* visibility: hidden; */
+}
+
+#theme-default .style-img {
+    background: linear-gradient(to bottom right, red, orange, yellow, green, blue, purple);
+}
+
+.option.current-theme {
+    font-weight: bold;
+}
+
+.select-menu:hover .option,
+.select-menu.active .option {
+    /* mix-blend-mode: difference; */
+    height: 32px;
+    margin-bottom: 16px;
+}
+
+.select-menu:hover .option::after {
+    /* box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);b   */
+}
+
+@media only screen and (min-width: 321px) {
+    .splashScreen {
+        font-size: 144px;
+        line-height: 110px;
+    }
+    .splashScreenSmall {
+        font-size: 16px;
+        letter-spacing: -0.05em;
+        top: 122px;
+    }
+    .select-menu {
+        position: absolute;
+        top: 48px;
+        right: 32px;
+        width: 128px;
+        height: 32px;
+        mix-blend-mode: difference;
+        transition: all ease-in-out 200ms;
+        z-index: 1;
+        /* background: none; */
+    }
+    .items {
+        top: 0;
+        right: 0;
+        bottom: unset;
+        
+    }
+    .select-menu:hover .items{
+        /* transform: none; */
+    }
+}
